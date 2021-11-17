@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+        
+<mapper namespace="com.javayongju.ex_springEx.dao.MDao">
+	<select id="listDao" resultType="com.javayongju.ex_springEx.dto.MDto">
+		SELECT * FROM EXTABLE ORDER BY MNUM DESC	
+	</select>
+	
+	<select id="memberView" resultType="com.javayongju.ex_springEx.dto.MDto">
+	SELECT * FROM EXTABLE WHERE MNUM = #{param1}
+	</select>
+	
+	
+	<insert id="memberDao">
+		INSERT INTO EXTABLE (MNUM,MNAME,MPHONE,MADDR) VALUES (EXTABLE_SEQ.NEXTVAL,#{param1}, #{param2},#{param3})
+	</insert>
+	
+	<delete id="deleteDao">
+		DELETE FROM EXTABLE WHERE MNUM = #{param1}
+	</delete>
+	
+	<update id="modifyDao">
+	UPDATE EXTABLE SET MPHONE = #{param1} , MADDR =#{param2} WHERE MNUM =#{param3}
+	</update>
+
+
+</mapper>
